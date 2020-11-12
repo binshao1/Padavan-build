@@ -1,5 +1,5 @@
 #修改TNAME: K2P-5.0 中的K2P-5.0为你需要编译的型号，注意名称要与configs/templates/目录下的名字相同
-name: Build Padavan
+name: Build Padavan-K2
 
 on: 
   release:
@@ -38,7 +38,7 @@ jobs:
         mkdir -p /opt/images/
     - name: Build Firmware
       env:
-        TNAME: K2P-5.0
+        TNAME: PSG1218
       run: |
         cd /opt/rt-n56u/trunk
         if [ ! -f configs/templates/$TNAME.config ] ; then
@@ -76,7 +76,7 @@ jobs:
         echo "CONFIG_FIRMWARE_INCLUDE_FRPC=n" >> .config #内网穿透FRPC
         echo "CONFIG_FIRMWARE_INCLUDE_FRPS=n" >> .config #内网穿透FRPS
         echo "CONFIG_FIRMWARE_INCLUDE_TUNSAFE=n" >> .config #TUNSAFE
-        echo "CONFIG_FIRMWARE_INCLUDE_ALIDDNS=y" >> .config #阿里DDNS
+        echo "CONFIG_FIRMWARE_INCLUDE_ALIDDNS=n" >> .config #阿里DDNS
         echo "CONFIG_FIRMWARE_INCLUDE_SMARTDNS=n" >> .config #smartdns
         echo "CONFIG_FIRMWARE_INCLUDE_SMARTDNSBIN=n" >> .config #smartdns二进制文件
         echo "CONFIG_FIRMWARE_INCLUDE_V2RAY=n" >> .config #集成v2ray执行文件（3.8M左右)，如果不集成，会从网上下载下来执行，不影响正常使用
@@ -86,7 +86,7 @@ jobs:
         echo "CONFIG_FIRMWARE_INCLUDE_CADDYBIN=n" >> .config #集成caddu执行文件，此文件有13M,请注意固件大小。如果不集成，会从网上下载下来执行，不影响正常使用
         echo "CONFIG_FIRMWARE_INCLUDE_ADGUARDHOME=n" >> .config
         echo "CONFIG_FIRMWARE_INCLUDE_SRELAY=n" >> .config #可以不集成
-        echo "CONFIG_FIRMWARE_INCLUDE_WYY=n" >> .config #网易云解锁
+        echo "CONFIG_FIRMWARE_INCLUDE_WYY=y" >> .config #网易云解锁
         echo "CONFIG_FIRMWARE_INCLUDE_WYYBIN=n" >> .config #网易云解锁GO版本执行文件（4M多）注意固件超大小,不集成会自动下载
         echo "CONFIG_FIRMWARE_INCLUDE_ZEROTIER=n" >> .config #zerotier ~1.3M
         #########################################################################################
@@ -99,9 +99,9 @@ jobs:
         sed -i '/CONFIG_FIRMWARE_INCLUDE_OPENVPN/d' .config #删除配置项openvpn
         #echo "自定义项=y" >> .config
         echo "CONFIG_FIRMWARE_INCLUDE_NJIT_CLIENT=n" >> .config #NJIT_CLIENT
-        echo "CONFIG_FIRMWARE_INCLUDE_DDNS_SSL=y" >> .config #HTTPS support for DDNS client. openssl ~1.2MB
-        echo "CONFIG_FIRMWARE_INCLUDE_HTTPS=y" >> .config #HTTPS support. openssl ~1.2MB        
-        echo "CONFIG_FIRMWARE_INCLUDE_OPENVPN=y" >> .config #OpenVPN. IPv6 required. openssl ~1.2MB, openvpn ~0.4MB   
+        echo "CONFIG_FIRMWARE_INCLUDE_DDNS_SSL=n" >> .config #HTTPS support for DDNS client. openssl ~1.2MB
+        echo "CONFIG_FIRMWARE_INCLUDE_HTTPS=n" >> .config #HTTPS support. openssl ~1.2MB        
+        echo "CONFIG_FIRMWARE_INCLUDE_OPENVPN=n" >> .config #OpenVPN. IPv6 required. openssl ~1.2MB, openvpn ~0.4MB   
         #########################################################################################
         sudo ./clear_tree
         sudo ./build_firmware_modify $TNAME 0
