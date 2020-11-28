@@ -76,12 +76,12 @@ jobs:
         echo "CONFIG_FIRMWARE_INCLUDE_FRPC=n" >> .config #内网穿透FRPC
         echo "CONFIG_FIRMWARE_INCLUDE_FRPS=n" >> .config #内网穿透FRPS
         echo "CONFIG_FIRMWARE_INCLUDE_TUNSAFE=n" >> .config #TUNSAFE
-        echo "CONFIG_FIRMWARE_INCLUDE_ALIDDNS=n" >> .config #阿里DDNS
+        echo "CONFIG_FIRMWARE_INCLUDE_ALIDDNS=y" >> .config #阿里DDNS
         echo "CONFIG_FIRMWARE_INCLUDE_SMARTDNS=n" >> .config #smartdns
         echo "CONFIG_FIRMWARE_INCLUDE_SMARTDNSBIN=n" >> .config #smartdns二进制文件
         echo "CONFIG_FIRMWARE_INCLUDE_V2RAY=n" >> .config #集成v2ray执行文件（3.8M左右)，如果不集成，会从网上下载下来执行，不影响正常使用
         echo "CONFIG_FIRMWARE_INCLUDE_TROJAN=n" >> .config #集成trojan执行文件(1.1M左右)，如果不集成，会从网上下载下来执行，不影响正常使用
-        echo "CONFIG_FIRMWARE_INCLUDE_KOOLPROXY=n" >> .config #KP广告过滤
+        echo "CONFIG_FIRMWARE_INCLUDE_KOOLPROXY=y" >> .config #KP广告过滤
         echo "CONFIG_FIRMWARE_INCLUDE_CADDY=n" >> .config #在线文件管理服务
         echo "CONFIG_FIRMWARE_INCLUDE_CADDYBIN=n" >> .config #集成caddu执行文件，此文件有13M,请注意固件大小。如果不集成，会从网上下载下来执行，不影响正常使用
         echo "CONFIG_FIRMWARE_INCLUDE_ADGUARDHOME=n" >> .config
@@ -101,8 +101,8 @@ jobs:
         sed -i '/CONFIG_FIRMWARE_INCLUDE_CURL/d' .config #删除配置项openvpn
         #echo "自定义项=y" >> .config
         echo "CONFIG_FIRMWARE_INCLUDE_NJIT_CLIENT=n" >> .config #NJIT_CLIENT
-        echo "CONFIG_FIRMWARE_INCLUDE_DDNS_SSL=n" >> .config #HTTPS support for DDNS client. openssl ~1.2MB
-        echo "CONFIG_FIRMWARE_INCLUDE_HTTPS=n" >> .config #HTTPS support. openssl ~1.2MB        
+        echo "CONFIG_FIRMWARE_INCLUDE_DDNS_SSL=y" >> .config #HTTPS support for DDNS client. openssl ~1.2MB
+        echo "CONFIG_FIRMWARE_INCLUDE_HTTPS=y" >> .config #HTTPS support. openssl ~1.2MB        
         echo "CONFIG_FIRMWARE_INCLUDE_OPENVPN=n" >> .config #OpenVPN. IPv6 required. openssl ~1.2MB, openvpn ~0.4MB   
         echo "CONFIG_FIRMWARE_INCLUDE_VLMCSD=n" >> .config #OpenVPN
         echo "CONFIG_FIRMWARE_INCLUDE_CURL=n" >> .config #OpenVPN
