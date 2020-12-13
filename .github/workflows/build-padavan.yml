@@ -93,11 +93,9 @@ jobs:
         #自定义添加其它功能请参考源码configs/templates/目录下的config文件。按照上面的格式添加即可
         #格式如下：
         #sed -i '/自定义项/d' .config
-        sed -i '/CONFIG_FIRMWARE_INCLUDE_NJIT_CLIENT/d' .config #删除配置项NJIT_CLIENT
         sed -i '/CONFIG_FIRMWARE_INCLUDE_DDNS_SSL/d' .config #删除配置项ddns—ssl
         sed -i '/CONFIG_FIRMWARE_INCLUDE_HTTPS/d' .config #删除配置项https
         #echo "自定义项=y" >> .config
-        echo "CONFIG_FIRMWARE_INCLUDE_NJIT_CLIENT=n" >> .config #NJIT_CLIENT
         echo "CONFIG_FIRMWARE_INCLUDE_DDNS_SSL=y" >> .config #HTTPS support for DDNS client. openssl ~1.2MB
         echo "CONFIG_FIRMWARE_INCLUDE_HTTPS=y" >> .config #HTTPS support. openssl ~1.2MB        
         #########################################################################################
